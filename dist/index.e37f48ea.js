@@ -591,6 +591,8 @@ var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
 async function controlRecipes() {
     try {
         let id = window.location.hash.slice(1);
+        if (!id || id === "") //throw ("No hay ninguna receta");
+        return; // No query, return immediately
         (0, _recipeViewJsDefault.default).renderSpinner();
         await _modelJs.loadRecipe(id);
         const { recipe } = (0, _modelJsDefault.default);
@@ -614,13 +616,19 @@ async function controlSearchResults() {
     //searchView.getQuery
     } catch (err) {
         console.error("Ocurri\xf3 un error:", err);
+    //RecipeView.renderError(err); 
     }
 }
 const controlPagination = function(goToPage) {
-    // 1) Render NEW results
-    (0, _resultViewJsDefault.default).render(_modelJs.getSearchResultsPage(goToPage));
-    // 2) Render NEW pagination buttons
-    (0, _paginationViewJsDefault.default).render((0, _modelJsDefault.default).search);
+    try {
+        // 1) Render NEW results
+        (0, _resultViewJsDefault.default).render(_modelJs.getSearchResultsPage(goToPage));
+        // 2) Render NEW pagination buttons
+        (0, _paginationViewJsDefault.default).render((0, _modelJsDefault.default).search);
+    } catch (err) {
+        //RecipeView.renderError(err); 
+        console.error("Ocurri\xf3 un error:", err);
+    }
 };
 function init() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
@@ -657,6 +665,7 @@ const loadRecipe = async (id)=>{
         state.recipe = recipe;
     } catch (err) {
         /*alert(err);*/ console.log(`${err} 💥💥💥💥`);
+        throw err;
     }
 };
 const loadSearchResults = async (query)=>{
@@ -749,7 +758,7 @@ async function getJSON(url) {
 const timeout = (s)=>{
     return new Promise(function(_, reject) {
         setTimeout(function() {
-            reject(new Error(`Request took too long! Timeout after ${s} second`));
+            reject(new Error(`¡La solicitud tomó demasiado tiempo! Expiró después de ${s} segundo(s).`));
         }, s * 1000);
     });
 };
@@ -779,7 +788,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
             <use href="${0, _iconsSvgDefault.default}#icon-alert-triangle"></use>
         </svg>
         </div>
-        <p>No recipes found for your query. Please try again!</p>
+        <p>No se encontraron recetas para tu búsqueda. ¡Por favor, inténtalo de nuevo!</p>
     </div> 
     <figure class="recipe__fig">
     <img src="${this._data.image_url}" alt="Tomato" class="recipe__img" />
@@ -1227,7 +1236,7 @@ class View {
     _data;
     render(data) {
         if (!data || Array.isArray(data) && data.length === 0) {
-            this.renderError("sin datos");
+            this.renderError("No se encontro ningun resultado");
             return;
         }
         this._data = data;

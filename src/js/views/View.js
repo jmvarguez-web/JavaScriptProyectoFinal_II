@@ -4,7 +4,7 @@ class View{
 
     render(data) {
         if (!data || (Array.isArray(data) && data.length === 0)) {
-            this.renderError("sin datos");
+            this.renderError("No se encontro ningun resultado");
             return;
           }
         this._data = data;

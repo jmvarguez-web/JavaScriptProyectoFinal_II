@@ -13,6 +13,10 @@ import paginationView from './views/paginationView.js';
 async function controlRecipes() {
   try {
     let id = window.location.hash.slice(1);
+    if (!id || id==="") {
+      //throw ("No hay ninguna receta");
+      return; // No query, return immediately
+    }
     RecipeView.renderSpinner();
     await model.loadRecipe(id);
     const { recipe } = state;
@@ -31,6 +35,8 @@ async function controlSearchResults(){
     let query = SearchView.getQuery();
     if (!query) {
       return; // No query, return immediately
+      //throw("especfique un valor de busqueda");
+      
     }
   await model.loadSearchResults(query); 
 
@@ -48,14 +54,22 @@ async function controlSearchResults(){
   
   } catch (err) {
     console.error('Ocurrió un error:', err);
+    //RecipeView.renderError(err); 
   }
 }
 const controlPagination = function (goToPage) {
-  // 1) Render NEW results
+  try {
+    // 1) Render NEW results
   resultsView.render(model.getSearchResultsPage(goToPage));
 
   // 2) Render NEW pagination buttons
-  paginationView.render(state.search);
+  paginationView.render(state.search); 
+  } catch (err) {
+   
+    //RecipeView.renderError(err); 
+   console.error('Ocurrió un error:', err);
+  }
+ 
 };
 
 function init() {

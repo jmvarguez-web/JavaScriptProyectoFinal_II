@@ -19,7 +19,7 @@ export async function getJSON(url) {
  const timeout = (s)=>{
     return new Promise(function (_, reject) {
     setTimeout(function () {
-        reject(new Error(`Request took too long! Timeout after ${s} second`));
+        reject(new Error(`¡La solicitud tomó demasiado tiempo! Expiró después de ${s} segundo(s).`));
       }, s * 1000);
     });
 };

@@ -23,7 +23,7 @@ class RecipeView extends View{
             <use href="${icons}#icon-alert-triangle"></use>
         </svg>
         </div>
-        <p>No recipes found for your query. Please try again!</p>
+        <p>No se encontraron recetas para tu búsqueda. ¡Por favor, inténtalo de nuevo!</p>
     </div> 
     <figure class="recipe__fig">
     <img src="${this._data.image_url}" alt="Tomato" class="recipe__img" />
