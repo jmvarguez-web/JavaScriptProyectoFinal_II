@@ -35,7 +35,7 @@
 103C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\node_modules\csso\lib\version.js133378406976646424 0
 118C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\node_modules\cosmiconfig\dist\ExplorerBase.d.ts133378406969009156 0
 78C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\.vscode133374881258395217 1
-83C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\package.json133379198932736867 0
+83C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\package.json133379215513166707 0
 103C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\node_modules\color-name\index.js133378406951447200 0
 117C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\node_modules\caniuse-lite\data\features\let.js133378406989582621 0
 100C:\Users\jmvar\OneDrive\Escritorio\Javascript_II_ProyectoFinal\forkify\node_modules\anymatch\LICENSE133378406950619404 0

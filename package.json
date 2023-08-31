@@ -5,7 +5,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --no-scope-hoist"
   },
   "author": "Jesus Manuel Varguez Basto",
   "license": "ISC",
